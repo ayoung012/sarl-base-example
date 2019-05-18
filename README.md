@@ -3,11 +3,11 @@ This will boot a single agent using the janus mvn dependency.
 
 See http://www.sarl.io for more details.
 
-### Requirements
+#### Requirements
 `mvn`
 
-### Compile
+#### Compile
 `mvn clean compile`
 
-### Run
+#### Run
 `mvn exec:java`
