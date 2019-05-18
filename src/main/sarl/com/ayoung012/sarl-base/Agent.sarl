@@ -1,4 +1,4 @@
-package com.github.ayoung012
+package com.ayoung012
 
 import io.sarl.core.DefaultContextInteractions
 import io.sarl.core.Initialize

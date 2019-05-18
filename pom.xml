@@ -6,7 +6,7 @@
     <!-- ##################################################################
 		PROJECT INFO 
      ####################################################################### -->
-    <groupId>com.github.ayoung012</groupId>
+    <groupId>com.ayoung012</groupId>
     <artifactId>sarl-base</artifactId>
     <version>0.1</version>
 

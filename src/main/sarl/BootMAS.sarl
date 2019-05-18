@@ -7,7 +7,7 @@ import io.sarl.lang.core.Agent
 
 class BootMAS {
 	def static main(args : String[]) : void {
-		val basePackage = "com.github.ayoung012"
+		val basePackage = "com.ayoung012"
 		val agentToLaunch = "Agent"
 		var fullyQualifiedAgent : String
 
