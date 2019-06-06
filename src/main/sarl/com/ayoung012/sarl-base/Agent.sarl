@@ -7,22 +7,23 @@ import io.sarl.core.Lifecycle
 import io.sarl.core.AgentSpawned
 
 agent Agent {
-	uses Lifecycle, Logging, DefaultContextInteractions
+    uses Lifecycle, Logging, DefaultContextInteractions
 
     var agents:int = 0
 
-	on Initialize {
-		info("Agent Initialised")
+    on Initialize {
+        setLoggingName("Agent")
+        info("Initialised")
         spawn(Agent1)
         spawn(Agent2)
         spawn(Agent3)
-	}
+    }
 
     on AgentSpawned {
         agents ++
         info("Agent Spawned: {0}", agents)
         if (agents > 2) {
-            info("3 Agents Spawned")
+            info("All Agents Spawned")
             emit(new E_Ping)
             killMe
         }
@@ -30,13 +31,14 @@ agent Agent {
 }
 
 agent Agent1 {
-	uses Lifecycle, Logging, DefaultContextInteractions
+    uses Lifecycle, Logging, DefaultContextInteractions
 
     var events:int = 0
 
-	on Initialize {
-		info("Agent1 Initialised")
-	}
+    on Initialize {
+        setLoggingName("Agent1")
+        info("Initialised")
+    }
 
     on E_Pong {
         events ++
@@ -50,13 +52,14 @@ agent Agent1 {
 }
 
 agent Agent2 {
-	uses Lifecycle, Logging, DefaultContextInteractions
+    uses Lifecycle, Logging, DefaultContextInteractions
 
     var events:int = 0
 
-	on Initialize {
-		info("Agent2 Initialised")
-	}
+    on Initialize {
+        setLoggingName("Agent2")
+        info("Initialised")
+    }
 
     on E_Pung {
         events ++
@@ -70,13 +73,14 @@ agent Agent2 {
 }
 
 agent Agent3 {
-	uses Lifecycle, Logging, DefaultContextInteractions
+    uses Lifecycle, Logging, DefaultContextInteractions
 
     var events:int = 0
 
-	on Initialize {
-		info("Agent3 Initialised")
-	}
+    on Initialize {
+        setLoggingName("Agent3")
+        info("Initialised")
+    }
 
     on E_Ping {
         events ++
