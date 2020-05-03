@@ -34,61 +34,13 @@
         SARL PROPERTIES
      ####################################################################### -->
     <properties>
-		<!--  Maven boot class for mvn exec:java -->
+        <!--  Maven boot class for mvn exec:java -->
         <boot.class>BootMAS</boot.class>
-		<sarl.version>0.9.0</sarl.version>
+        <jdk.version>1.8</jdk.version>
+        <sarl.version>0.10.0</sarl.version>
         <janus.version>2.${sarl.version}</janus.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-
-    <!-- ##################################################################
-		REPOSITORIES 
-     ####################################################################### -->
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>maven.sarl.io</id>
-            <name>SARL Maven Repository</name>
-            <url>http://maven.sarl.io/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
-
-    <repositories>
-        <!-- JANUS Project kernel (contains SARL language core) -->
-        <repository>
-            <id>maven.sarl.io</id>
-            <name>SARL Maven Repository</name>
-            <url>http://maven.sarl.io/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <!-- ##################################################################
-		DEPENDENCIES 
-     ####################################################################### -->
-    <dependencies>
-        <!-- JANUS Project kernel (contains SARL language core) -->
-        <dependency>
-            <groupId>io.janusproject</groupId>
-            <artifactId>io.janusproject.kernel</artifactId>
-            <version>${janus.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.7</version>
-		</dependency>
-    </dependencies>
-
-
 
 
     <!-- ##################################################################
@@ -105,19 +57,30 @@
                 <version>${sarl.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <source>${compiler.level}</source>
-                    <target>${compiler.level}</target>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            
-            
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
 			<!--  Class to execute via maven exec:java 
 			https://www.mojohaus.org/exec-maven-plugin/
 			-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
                 <configuration>
 	                <addClasspath>true</addClasspath>
 	                <!-- 
@@ -164,5 +127,18 @@
         </plugins>
 
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.sarl.maven</groupId>
+            <artifactId>io.sarl.maven.sdk</artifactId>
+            <version>${sarl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.janusproject</groupId>
+            <artifactId>io.janusproject.kernel</artifactId>
+            <version>${janus.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
